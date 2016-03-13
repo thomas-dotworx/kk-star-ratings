@@ -43,6 +43,8 @@
 	float: left;
 	position: relative;
 	z-index: 1;
+	text-decoration: none;
+	border: 0;
 }
 .kk-star-ratings .kksr-legend {
 	font-size: 12px;
