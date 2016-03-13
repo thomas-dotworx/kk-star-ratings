@@ -1,26 +1,34 @@
 <div class="bhittani-framework">
     <?php if(isset($sidebar)) : ?>
 	<div class="bf-wrap-small _right">
-		<h3>Like the plugin</h3>
-		<p>
-			<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-	        <fb:like send="false" layout="box_count" width="225" show_faces="false" href="https://github.com/kamalkhan/kk-star-ratings"></fb:like>
-    	</p>
-        <a href="http://bit.ly/awesome-live-chat" title="Awesome Live Chat">
+
+        <!-- Place this tag where you want the button to render. -->
+        <a class="github-button" href="https://github.com/kamalkhan/kk-star-ratings" data-icon="octicon-star" data-style="mega" data-count-href="/kamalkhan/kk-star-ratings/stargazers" data-count-api="/repos/kamalkhan/kk-star-ratings#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star kamalkhan/kk-star-ratings on GitHub">
+            kk Star Ratings
+        </a>
+        <br><br>
+        <!-- Place this tag right after the last button or just before your close body tag. -->
+        <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+
+        <a href="http://bit.ly/awesome-live-chat" title="Awesome Live Chat" target="_blank">
             <img alt="Awesome Live Chat - CodeCanyon Item for Sale" border="0" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:9931156,&quot;name&quot;:&quot;Awesome Live Chat&quot;,&quot;brand&quot;:&quot;KamalKhan&quot;,&quot;category&quot;:&quot;codecanyon.net/category/wordpress&quot;,&quot;position&quot;:5,&quot;list&quot;:&quot;Author portfolio&quot;}" data-item-author="KamalKhan" data-item-category="WordPress" data-item-cost="25" data-item-id="9931156" data-item-name="Awesome Live Chat" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/116826712/jumbotron.jpg" data-preview-width="" height="80" src="https://thumb-cc.s3.envato.com/files/116826711/thumbnail.jpg" title="" width="80" data-tooltip="Awesome Live Chat">
         </a>
-        <a href="http://bit.ly/awesome-live-chat-os-x" title="Awesome Live Chat Desk OS X">
+        <a href="http://bit.ly/awesome-live-chat-os-x" title="Awesome Live Chat Desk OS X" target="_blank">
             <img alt="Awesome Live Chat Desk OS X - CodeCanyon Item for Sale" border="0" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:10106623,&quot;name&quot;:&quot;Awesome Live Chat Desk OS X&quot;,&quot;brand&quot;:&quot;KamalKhan&quot;,&quot;category&quot;:&quot;codecanyon.net/category/apps/mac&quot;,&quot;position&quot;:3,&quot;list&quot;:&quot;Author portfolio&quot;}" data-item-author="KamalKhan" data-item-category="Apps / Mac" data-item-cost="10" data-item-id="10106623" data-item-name="Awesome Live Chat Desk OS X" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/118693278/jumbotron-osx.png" data-preview-width="" height="80" src="https://thumb-cc.s3.envato.com/files/118693274/thumbnail.png" title="" width="80" data-tooltip="Awesome Live Chat Desk OS X">
         </a>
-        <a href="http://bit.ly/awesome-live-chat-pc" title="Awesome Live Chat Desk PC">
+        <a href="http://bit.ly/awesome-live-chat-pc" title="Awesome Live Chat Desk PC" target="_blank">
             <img alt="Awesome Live Chat Desk PC - CodeCanyon Item for Sale" border="0" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:10398931,&quot;name&quot;:&quot;Awesome Live Chat Desk PC&quot;,&quot;brand&quot;:&quot;KamalKhan&quot;,&quot;category&quot;:&quot;codecanyon.net/category/apps/windows&quot;,&quot;position&quot;:2,&quot;list&quot;:&quot;Author portfolio&quot;}" data-item-author="KamalKhan" data-item-category="Apps / Windows" data-item-cost="11" data-item-id="10398931" data-item-name="Awesome Live Chat Desk PC" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/122225936/jumbotron-pc.png" data-preview-width="" height="80" src="https://thumb-cc.s3.envato.com/files/122225933/thumbnail.png" title="" width="80" data-tooltip="Awesome Live Chat Desk PC">
         </a>
-        <a href="http://bit.ly/awesome-live-chat-desk-linux" title="Awesome Live Chat Desk Linux">
+        <a href="http://bit.ly/awesome-live-chat-desk-linux" title="Awesome Live Chat Desk Linux" target="_blank">
             <img alt="Awesome Live Chat Desk Linux - CodeCanyon Item for Sale" border="0" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:11996346,&quot;name&quot;:&quot;Awesome Live Chat Desk Linux&quot;,&quot;brand&quot;:&quot;KamalKhan&quot;,&quot;category&quot;:&quot;codecanyon.net/category/html5/miscellaneous&quot;,&quot;position&quot;:1,&quot;list&quot;:&quot;Author portfolio&quot;}" data-item-author="KamalKhan" data-item-category="HTML5 / Miscellaneous" data-item-cost="11" data-item-id="11996346" data-item-name="Awesome Live Chat Desk Linux" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/140022646/jumbotron-linux.png" data-preview-width="" height="80" src="https://thumb-cc.s3.envato.com/files/140022645/thumbnail.png" title="" width="80" data-tooltip="Awesome Live Chat Desk Linux">
         </a>
-        <a href="http://bit.ly/awesome-live-chat-server" title="Awesome Live Chat Server">
+        <?php
+        /*
+        <a href="http://bit.ly/awesome-live-chat-server" title="Awesome Live Chat Server" target="_blank">
             <img alt="Awesome Live Chat Server - CodeCanyon Item for Sale" border="0" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:10010235,&quot;name&quot;:&quot;Awesome Live Chat Server&quot;,&quot;brand&quot;:&quot;KamalKhan&quot;,&quot;category&quot;:&quot;codecanyon.net/category/javascript/miscellaneous&quot;,&quot;position&quot;:4,&quot;list&quot;:&quot;Author portfolio&quot;}" data-item-author="KamalKhan" data-item-category="JavaScript / Miscellaneous" data-item-cost="14" data-item-id="10010235" data-item-name="Awesome Live Chat Server" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/117666866/jumbotron.png" data-preview-width="" height="80" src="https://thumb-cc.s3.envato.com/files/117666864/thumbnail.png" title="" width="80" data-tooltip="Awesome Live Chat Server">
         </a>
+        */
+        ?>
     </div>
     <!-- bf-wrap-small -->
     <?php endif; ?>
@@ -40,6 +48,15 @@
             	<?php echo $h3; ?>
             </h3>
             <div class="links">
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-like" data-href="https://github.com/kamalkhan/kk-star-ratings" data-width="167" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
                 <?php
 					if(isset($Url) && is_array($Url))
 					{
