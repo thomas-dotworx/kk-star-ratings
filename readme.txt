@@ -9,9 +9,9 @@ Tags: star ratings, votings, rate posts, ajax ratings, infinite stars, unlimited
 
 Requires at least: 3.0
 
-Tested up to: 4.1
+Tested up to: 4.4.2
 
-Stable tag: 2.4.1
+Stable tag: 2.5
 
 
 kk Star Ratings allows blog visitors to involve and interact more effectively with your website by rating posts.
@@ -78,7 +78,15 @@ Enhanced settings page where you can adjust quite anything you may need to. You 
 
 == Frequently Asked Questions ==
 
-= 
+=
+
+I found a bug or want to contribute.
+
+=
+
+The source of this plugin is located at https://github.com/kamalkhan/kk-star-ratings (as of v2.5+). Feel free to post an issue or submit a pull request.
+
+=
 
 I have been using an older verion of the plugin. Is it safe for me to update?
 
@@ -86,7 +94,7 @@ I have been using an older verion of the plugin. Is it safe for me to update?
 
 Version 2.0+ has been re-coded from the ground up preserving backwards compatibility. Feel free to upgrade safely.
 
-= 
+=
 
 I need some help or have some issues?
 
@@ -131,6 +139,13 @@ Visit the help tab in the settings to find out what you can do.
 
 
 == Changelog ==
+
+= 2.5 =
+* Fix: Deprecate WP_Widget for __construct. Required for wp 4.3+.
+* Fix google rich snippets by using #Ratings as the vocabulary.
+* Update: social and sponsored links in admin.
+* Add: Css reset for star anchors.
+* Use github for managing the plugin source at https://github.com/kamalkhan/kk-star-ratings.
 
 = 2.4 =
 * Fix: Upper and Lower boundary limits for rating. Oops, had not noticed this before.
