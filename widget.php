@@ -12,7 +12,7 @@ class BhittaniPlugin_kkStarRatings_Widget extends WP_Widget
 		'classname' => 'kk-star-ratings-widget',
 		'description' => 'Show top rated posts'
 		);
-		parent::WP_Widget('BhittaniPlugin_kkStarRatings_Widget', 'kk Star Ratings', $widget_options);
+		parent::__construct('BhittaniPlugin_kkStarRatings_Widget', 'kk Star Ratings', $widget_options);
 	}
 	// Outputs USER INTERFACE
 	public function widget($args, $instance)
@@ -25,7 +25,7 @@ class BhittaniPlugin_kkStarRatings_Widget extends WP_Widget
 
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
-		
+
 		// OUTPUT starts
 		$posts = kk_star_ratings_get($total, $category);
 		echo '<ul>';
@@ -40,14 +40,14 @@ class BhittaniPlugin_kkStarRatings_Widget extends WP_Widget
 		}
 		echo '</ul>';
 		// OUTPUT ends
-		
+
 		echo $after_widget;
 	}
 	// Updates OPTIONS
 	/*
 	public function update()
 	{
-		
+
 	}
 	*/
 	// The option FORM
@@ -57,7 +57,7 @@ class BhittaniPlugin_kkStarRatings_Widget extends WP_Widget
         <p>
             <label for="<?php echo $this->get_field_id('title'); ?>">Title:
             <input id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr(!empty($instance['title'])?$instance['title']: 'Top Posts'); ?>" /></label>
-        </p> 
+        </p>
         <p>
             <label for="<?php echo $this->get_field_id('noofposts'); ?>">No of Posts:
             <input id="<?php echo $this->get_field_id('noofposts'); ?>" name="<?php echo $this->get_field_name('noofposts'); ?>" type="text" value="<?php echo esc_attr(!empty($instance['noofposts'])?$instance['noofposts']: '5'); ?>" size="3" /></label>
