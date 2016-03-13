@@ -4,9 +4,23 @@
 		<h3>Like the plugin</h3>
 		<p>
 			<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-	        <fb:like send="false" layout="box_count" width="225" show_faces="false" href="http://wakeusup.com/2011/05/kk-star-ratings/"></fb:like>
+	        <fb:like send="false" layout="box_count" width="225" show_faces="false" href="https://github.com/kamalkhan/kk-star-ratings"></fb:like>
     	</p>
-    	<iframe src="http://bhittani.com/wp.php" id="bfa" width="225" height="400" scrolling="no" border="0"></iframe>
+        <a href="http://bit.ly/awesome-live-chat" title="Awesome Live Chat">
+            <img alt="Awesome Live Chat - CodeCanyon Item for Sale" border="0" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:9931156,&quot;name&quot;:&quot;Awesome Live Chat&quot;,&quot;brand&quot;:&quot;KamalKhan&quot;,&quot;category&quot;:&quot;codecanyon.net/category/wordpress&quot;,&quot;position&quot;:5,&quot;list&quot;:&quot;Author portfolio&quot;}" data-item-author="KamalKhan" data-item-category="WordPress" data-item-cost="25" data-item-id="9931156" data-item-name="Awesome Live Chat" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/116826712/jumbotron.jpg" data-preview-width="" height="80" src="https://thumb-cc.s3.envato.com/files/116826711/thumbnail.jpg" title="" width="80" data-tooltip="Awesome Live Chat">
+        </a>
+        <a href="http://bit.ly/awesome-live-chat-os-x" title="Awesome Live Chat Desk OS X">
+            <img alt="Awesome Live Chat Desk OS X - CodeCanyon Item for Sale" border="0" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:10106623,&quot;name&quot;:&quot;Awesome Live Chat Desk OS X&quot;,&quot;brand&quot;:&quot;KamalKhan&quot;,&quot;category&quot;:&quot;codecanyon.net/category/apps/mac&quot;,&quot;position&quot;:3,&quot;list&quot;:&quot;Author portfolio&quot;}" data-item-author="KamalKhan" data-item-category="Apps / Mac" data-item-cost="10" data-item-id="10106623" data-item-name="Awesome Live Chat Desk OS X" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/118693278/jumbotron-osx.png" data-preview-width="" height="80" src="https://thumb-cc.s3.envato.com/files/118693274/thumbnail.png" title="" width="80" data-tooltip="Awesome Live Chat Desk OS X">
+        </a>
+        <a href="http://bit.ly/awesome-live-chat-pc" title="Awesome Live Chat Desk PC">
+            <img alt="Awesome Live Chat Desk PC - CodeCanyon Item for Sale" border="0" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:10398931,&quot;name&quot;:&quot;Awesome Live Chat Desk PC&quot;,&quot;brand&quot;:&quot;KamalKhan&quot;,&quot;category&quot;:&quot;codecanyon.net/category/apps/windows&quot;,&quot;position&quot;:2,&quot;list&quot;:&quot;Author portfolio&quot;}" data-item-author="KamalKhan" data-item-category="Apps / Windows" data-item-cost="11" data-item-id="10398931" data-item-name="Awesome Live Chat Desk PC" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/122225936/jumbotron-pc.png" data-preview-width="" height="80" src="https://thumb-cc.s3.envato.com/files/122225933/thumbnail.png" title="" width="80" data-tooltip="Awesome Live Chat Desk PC">
+        </a>
+        <a href="http://bit.ly/awesome-live-chat-desk-linux" title="Awesome Live Chat Desk Linux">
+            <img alt="Awesome Live Chat Desk Linux - CodeCanyon Item for Sale" border="0" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:11996346,&quot;name&quot;:&quot;Awesome Live Chat Desk Linux&quot;,&quot;brand&quot;:&quot;KamalKhan&quot;,&quot;category&quot;:&quot;codecanyon.net/category/html5/miscellaneous&quot;,&quot;position&quot;:1,&quot;list&quot;:&quot;Author portfolio&quot;}" data-item-author="KamalKhan" data-item-category="HTML5 / Miscellaneous" data-item-cost="11" data-item-id="11996346" data-item-name="Awesome Live Chat Desk Linux" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/140022646/jumbotron-linux.png" data-preview-width="" height="80" src="https://thumb-cc.s3.envato.com/files/140022645/thumbnail.png" title="" width="80" data-tooltip="Awesome Live Chat Desk Linux">
+        </a>
+        <a href="http://bit.ly/awesome-live-chat-server" title="Awesome Live Chat Server">
+            <img alt="Awesome Live Chat Server - CodeCanyon Item for Sale" border="0" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:10010235,&quot;name&quot;:&quot;Awesome Live Chat Server&quot;,&quot;brand&quot;:&quot;KamalKhan&quot;,&quot;category&quot;:&quot;codecanyon.net/category/javascript/miscellaneous&quot;,&quot;position&quot;:4,&quot;list&quot;:&quot;Author portfolio&quot;}" data-item-author="KamalKhan" data-item-category="JavaScript / Miscellaneous" data-item-cost="14" data-item-id="10010235" data-item-name="Awesome Live Chat Server" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/117666866/jumbotron.png" data-preview-width="" height="80" src="https://thumb-cc.s3.envato.com/files/117666864/thumbnail.png" title="" width="80" data-tooltip="Awesome Live Chat Server">
+        </a>
     </div>
     <!-- bf-wrap-small -->
     <?php endif; ?>
@@ -26,7 +40,7 @@
             	<?php echo $h3; ?>
             </h3>
             <div class="links">
-                <?php 
+                <?php
 					if(isset($Url) && is_array($Url))
 					{
 						$url_sep = '';
@@ -45,7 +59,7 @@
     <form method="post" action="" name="bf_form">
     <div class="bf_container __settings <?php echo ($opt=='general')?'__active':''; ?>">
         <?php
-            
+
             BhittaniPlugin_AdminMarkup::checkbox(array(
 				'title' => 'Enable/Disable',
 				'description' => 'Choose whether you want to enable or disable the plugin',
@@ -240,7 +254,7 @@
     </div>
     <!--bf_container __stars-->
     <div class="bf_container __tooltips <?php echo ($opt=='tooltips')?'__active':''; ?>">
-        <?php 
+        <?php
 	        BhittaniPlugin_AdminMarkup::checkbox(array(
 				'title' => 'Tooltips',
 				'description' => 'Choose whether you want to enable or disable the tooltips',
@@ -273,13 +287,13 @@
     </div>
     <!--bf_container __tooltips-->
     <div class="bf_container __reset <?php echo ($opt=='reset')?'__active':''; ?>">
-        <?php 
+        <?php
 		    global $wpdb;
 			$table = $wpdb->prefix . 'postmeta';
-			$Posts = $wpdb->get_results("SELECT a.ID, a.post_title 
-										 FROM " . $wpdb->posts . " a, $table b 
-										 WHERE a.ID=b.post_id AND 
-										 b.meta_key='_kksr_ratings' 
+			$Posts = $wpdb->get_results("SELECT a.ID, a.post_title
+										 FROM " . $wpdb->posts . " a, $table b
+										 WHERE a.ID=b.post_id AND
+										 b.meta_key='_kksr_ratings'
 										 ORDER BY a.ID ASC");
 			if(is_array($Posts))
 			{
@@ -294,12 +308,12 @@
 				}
 				if(count($Obj))
 				{
-					BhittaniPlugin_AdminMarkup::html('<p>Select the posts/pages below 
-												and click the reset button to reset 
+					BhittaniPlugin_AdminMarkup::html('<p>Select the posts/pages below
+												and click the reset button to reset
 												their ratings.</p>
 												<p>
-												<a href="#" rel="kksr-reset-all" class="button">Select All</a> 
-												<a href="#" rel="kksr-reset-none" class="button">Select None</a> 
+												<a href="#" rel="kksr-reset-all" class="button">Select All</a>
+												<a href="#" rel="kksr-reset-none" class="button">Select None</a>
 												<a href="#" rel="kksr-reset" class="button-primary" style="color:white;">Reset</a>
 												</p>'
 												);
@@ -312,12 +326,12 @@
 				}
 				else
 				{
-					BhittaniPlugin_AdminMarkup::html('No ratings have been placed.'); 
+					BhittaniPlugin_AdminMarkup::html('No ratings have been placed.');
 				}
 			}
 			else
 			{
-				BhittaniPlugin_AdminMarkup::html('No ratings have been placed.'); 
+				BhittaniPlugin_AdminMarkup::html('No ratings have been placed.');
 			}
 	    ?>
     </div>
@@ -389,7 +403,7 @@ function my_super_function2($post_id, $no_of_stars, $ip_address);
 </pre>
                     </code>
 				 </p>'
-    		); 
+    		);
     	?>
     </div>
     <!--bf_container __help-->
