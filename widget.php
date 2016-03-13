@@ -6,7 +6,7 @@ if(!class_exists('BhittaniPlugin_kkStarRatings_Widget') && function_exists('kk_s
 class BhittaniPlugin_kkStarRatings_Widget extends WP_Widget
 {
 	// Runs when OBJECT DECLARED (Instanciated)
-	public function BhittaniPlugin_kkStarRatings_Widget()
+	public function __construct()
 	{
 		$widget_options = array(
 		'classname' => 'kk-star-ratings-widget',
