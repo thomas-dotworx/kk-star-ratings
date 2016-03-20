@@ -5,10 +5,10 @@
 
 			// Register button and click event
 			ed.addButton('kkstarratings', {
-				title : 'Insert Star Ratings', 
-				cmd : 'mceKKStarRatings', 
-				image: url + '/icon.png', 
-				onclick : function(){
+				title : 'kk Star Ratings',
+				cmd : 'mceKKStarRatings',
+				image: url + '/icon.png',
+				onClick : function(){
 					ed.execCommand('mceReplaceContent', false, "[kkstarratings]");
 				}});
 		},
@@ -18,7 +18,7 @@
 				longname : 'kk Star Ratings',
 				author : 'Kamal Khan',
 				authorurl : 'http://bhittani.com',
-				infourl : 'http://wakeusup.com/2011/05/kk-star-ratings',
+				infourl : 'http://bhittani.com',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
 			};
 		}
@@ -26,5 +26,5 @@
 
 	// Register plugin
 	tinymce.PluginManager.add('kkstarratings', tinymce.plugins.kkStarRatings);
-	
+
 })();

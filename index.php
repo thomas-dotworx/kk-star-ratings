@@ -4,7 +4,7 @@
 Plugin Name: kk Star Ratings
 Plugin URI: https://github.com/kamalkhan/kk-star-ratings
 Description: Renewed from the ground up(as of v2.0), clean, animated and light weight ratings feature for your blog. With kk Star Ratings, you can <strong>allow your blog posts to be rated by your blog visitors</strong>. It also includes a <strong>widget</strong> which you can add to your sidebar to show the top rated post. Wait! There is more to it. Enjoy the extensive options you can set to customize this plugin.
-Version: 2.5
+Version: 2.5.1
 Author: Kamal Khan
 Author URI: http://bhittani.com
 License: GPLv2 or later
@@ -443,11 +443,12 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
 				{
 					do_action('kksr_init', $pid, number_format((float)($avg*($total_stars/5)), 2, '.', '').'/'.$total_stars, $ncasts);
 				}
-				$legend = parent::get_options('kksr_legend');
-				$legend = str_replace('[total]', $ncasts, $legend);
-				$legend = str_replace('[avg]', number_format((float)($avg*($total_stars/5)), 2, '.', '').'/'.$total_stars, $legend);
-				$legend = str_replace('[s]', $ncasts==1?'':'s', $legend);
-				$Response[$pid]['legend'] = str_replace('[per]',$per.'%', $legend);
+				// $legend = parent::get_options('kksr_legend');
+				// $legend = str_replace('[total]', $ncasts, $legend);
+				// $legend = str_replace('[avg]', number_format((float)($avg*($total_stars/5)), 2, '.', '').'/'.$total_stars, $legend);
+				// $legend = str_replace('[s]', $ncasts==1?'':'s', $legend);
+				// $Response[$pid]['legend'] = str_replace('[per]',$per.'%', $legend);
+				$Response[$pid]['legend'] = apply_filters('kksr_legend', parent::get_options('kksr_legend'), $pid);
 				$Response[$pid]['fuel'] = $per;
 			}
 
@@ -653,21 +654,21 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
 				if($score)
 				{
 					$votes = get_post_meta($id, '_kksr_casts', true) ? get_post_meta($id, '_kksr_casts', true) : 0;
-					$avg = $score ? number_format((float)($score/$votes), 2, '.', '') : 0;
-					$per = $score ? number_format((float)((($score/$votes)/5)*100), 2, '.', '') : 0;
+					$avg = $score ? round((float)(($score/$votes)*($best/5)), 2) : 0;
+					$per = $score ? round((float)((($score/$votes)/5)*100), 2) : 0;
 
-					$leg = str_replace('[total]', '<span property="v:votes">'.$votes.'</span>', $legend);
-					$leg = str_replace('[avg]', '<span property="v:average">'.$avg.'</span>/<span property="v:best">'.$best.'</span>', $leg);
-					$leg = str_replace('[per]',$per.'%', $leg);
-					$leg = str_replace('[s]', $votes==1?'':'s', $leg);
+					$leg = str_replace('[total]', '<span property="ratingCount">'.$votes.'</span>', $legend);
+					$leg = str_replace('[avg]', '<span property="ratingValue">'.$avg.'</span>', $leg);
+					$leg = str_replace('[per]',  $per .'%', $leg);
+					$leg = str_replace('[s]', $votes == 1 ? '' : 's', $leg);
 
-					$snippet = '<div xmlns:v="http://rdf.data-vocabulary.org/#Rating" typeof="v:Review-aggregate">';
-					$snippet .= '<span property="v:itemreviewed" class="kksr-title">' . $title . '</span>';
-					$snippet .= '<span rel="v:rating">';
-					$snippet .= '    <span typeof="v:Rating">';
-					$snippet .=          $leg;
-					$snippet .= '    </span>';
-					$snippet .= '</span>';
+					$snippet = '<div vocab="http://schema.org/" typeof="Blog">';
+					$snippet .= '    <div property="name" class="kksr-title">' . $title . '</div>';
+					$snippet .= '    <div property="aggregateRating" typeof="AggregateRating">';
+					$snippet .=              $leg;
+					$snippet .= '            <meta property="bestRating" content="'. $best . '"/>';
+					$snippet .= '            <meta property="worstRating" content="1"/>';
+					$snippet .= '    </div>';
 					$snippet .= '</div>';
 				}
 				else
@@ -681,7 +682,7 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
 		}
 	}
 
-	$kkStarRatings_obj = new BhittaniPlugin_kkStarRatings('bhittani_plugin_kksr', 'kk Star Ratings', '2.5');
+	$kkStarRatings_obj = new BhittaniPlugin_kkStarRatings('bhittani_plugin_kksr', 'kk Star Ratings', '2.5.1');
 
 	// Setup
     register_activation_hook(__FILE__, array($kkStarRatings_obj, 'activate'));

@@ -11,7 +11,7 @@ Requires at least: 3.0
 
 Tested up to: 4.4.2
 
-Stable tag: 2.5
+Stable tag: 2.5.1
 
 
 kk Star Ratings allows blog visitors to involve and interact more effectively with your website by rating posts.
@@ -77,6 +77,13 @@ Enhanced settings page where you can adjust quite anything you may need to. You 
 
 
 == Frequently Asked Questions ==
+=
+
+Google rich snippets are not being displayed when I updated to v2.5.1
+
+=
+
+The snippet code vocabulary has been updated. Have some patience and let google crawl your posts/pages again for some days.
 
 =
 
@@ -139,6 +146,12 @@ Visit the help tab in the settings to find out what you can do.
 
 
 == Changelog ==
+
+= 2.5.1 =
+* Fix: Google rich snippets with new vocabulary code.
+* Fix: Average calculation when x amount of stars used and changed dynamically.
+* Fix: Shortcode.
+* Fix: Styling.
 
 = 2.5 =
 * Fix: Deprecate WP_Widget for __construct. Required for wp 4.3+.

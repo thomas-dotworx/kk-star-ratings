@@ -1,6 +1,7 @@
 
 .kk-star-ratings {
 	width: 120px;
+	min-height: 48px;
 }
 .kk-star-ratings.top-left,
 .kk-star-ratings.top-right {
@@ -46,6 +47,11 @@
 	text-decoration: none;
 	border: 0;
 }
+.kk-star-ratings .kksr-stars a:focus {
+	text-decoration: none;
+	border: 0;
+	outline: none;
+}
 .kk-star-ratings .kksr-legend {
 	font-size: 12px;
 	color: #999;
@@ -56,4 +62,10 @@
 }
 .kk-star-ratings .kksr-legend .kksr-title {
 	display: none;
+}
+
+.kk-star-ratings .kksr-stars,
+.kk-star-ratings .kksr-stars .kksr-fuel,
+.kk-star-ratings .kksr-stars a {
+	background-color: transparent !important;
 }

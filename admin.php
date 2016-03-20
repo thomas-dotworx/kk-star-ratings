@@ -2,6 +2,21 @@
     <?php if(isset($sidebar)) : ?>
 	<div class="bf-wrap-small _right">
 
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CM659D9SHGKE6" target="_blank"
+            style="background-color: #B24747;
+            border: 1px solid #883232;
+            border-radius: 3px;
+            color: #fff;
+            padding: .75em;
+            display: block;
+            width: 140px;
+            text-align: center;
+            font-size: 14px;">
+            Donate to this plugin
+        </a>
+
+        <br>
+
         <!-- Place this tag where you want the button to render. -->
         <a class="github-button" href="https://github.com/kamalkhan/kk-star-ratings" data-icon="octicon-star" data-style="mega" data-count-href="/kamalkhan/kk-star-ratings/stargazers" data-count-api="/repos/kamalkhan/kk-star-ratings#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star kamalkhan/kk-star-ratings on GitHub">
             kk Star Ratings
