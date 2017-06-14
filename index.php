@@ -577,9 +577,15 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
               ) :
                 remove_shortcode('kkratings');
                 remove_shortcode('kkstarratings');
-                $content = str_replace('[kkratings]', '', $content);
-                $content = str_replace('[kkstarratings]', '', $content);
                 $markup = $this->markup();
+                if (strpos($content, '[kkratings]') !== false
+                    || strpos($content, '[kkstarratings]') !== false
+                ) {
+                    $markup = '<div style="display: inline-block">' . $markup . '</div>';
+                    $content = str_replace('[kkratings]', $markup, $content);
+                    $content = str_replace('[kkstarratings]', $markup, $content);
+                    return $content;
+                }
                 switch(parent::get_options('kksr_position'))
                 {
                     case 'bottom-left' :
