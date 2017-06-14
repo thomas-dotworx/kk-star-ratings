@@ -695,6 +695,7 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
             $leg = str_replace('[avg]', '<span itemprop="ratingValue">'.$avg.'</span>', $leg);
             $leg = str_replace('[per]',  $per .'%', $leg);
             $leg = str_replace('[s]', $votes == 1 ? '' : 's', $leg);
+            $leg = str_replace('[best]', $best, $leg);
 
             return $leg;
         }
