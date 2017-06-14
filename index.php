@@ -654,8 +654,8 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
                 if($score)
                 {
                     $votes = get_post_meta($id, '_kksr_casts', true) ? get_post_meta($id, '_kksr_casts', true) : 0;
-                    $avg = $score ? round((float)(($score/$votes)*($best/5)), 2) : 0;
-                    $per = $score ? round((float)((($score/$votes)/5)*100), 2) : 0;
+                    $avg = $score && $votes ? round((float)(($score/$votes)*($best/5)), 2) : 0;
+					$per = $score && $votes ? round((float)((($score/$votes)/5)*100), 2) : 0;
 
                     $leg = str_replace('[total]', '<span itemprop="ratingCount">'.$votes.'</span>', $legend);
                     $leg = str_replace('[avg]', '<span itemprop="ratingValue">'.$avg.'</span>', $leg);
