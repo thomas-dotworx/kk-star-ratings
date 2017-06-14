@@ -389,6 +389,31 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
             echo json_encode($Response);
             die();
         }
+        public function extract_ratings($id)
+        {
+            $best = (int) parent::get_options('kksr_stars');
+            $score = get_post_meta($id, '_kksr_ratings', true) ? ((int) get_post_meta($id, '_kksr_ratings', true)) : 0;
+            $votes = get_post_meta($id, '_kksr_casts', true) ? ((int) get_post_meta($id, '_kksr_casts', true)) : 0;
+            $avg = $score && $votes ? round((float)(($score/$votes)*($best/5)), 2) : 0;
+            $per = $score && $votes ? round((float)((($score/$votes)/5)*100), 2) : 0;
+
+            return compact('best', 'score', 'votes', 'avg', 'per');
+        }
+        public function ratings_as_legend($id, $ratings = null)
+        {
+            $ratings = $ratings ? $ratings : $this->extract_ratings($id);
+
+            return apply_filters(
+                'kksr_legend',
+                parent::get_options('kksr_legend'),
+                $id,
+                $ratings['best'],
+                $ratings['score'],
+                $ratings['votes'],
+                $ratings['avg'],
+                $ratings['per']
+            );
+        }
         public function kksr_ajax()
         {
             header('Content-type: application/json; charset=utf-8');
@@ -448,8 +473,10 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
                 // $legend = str_replace('[avg]', number_format((float)($avg*($total_stars/5)), 2, '.', '').'/'.$total_stars, $legend);
                 // $legend = str_replace('[s]', $ncasts==1?'':'s', $legend);
                 // $Response[$pid]['legend'] = str_replace('[per]',$per.'%', $legend);
-                $Response[$pid]['legend'] = apply_filters('kksr_legend', parent::get_options('kksr_legend'), $pid);
-                $Response[$pid]['fuel'] = $per;
+                // $Response[$pid]['legend'] = apply_filters('kksr_legend', parent::get_options('kksr_legend'), $pid);
+                $Response[$pid]['meta'] = $this->extract_ratings($pid);
+                $Response[$pid]['legend'] = $this->ratings_as_legend($pid, $Response[$pid]['meta']);
+                $Response[$pid]['fuel'] = (float) $per;
             }
 
             $Response[$pid]['success'] = true;
@@ -507,10 +534,9 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
                 </div>
                 <!-- kksr-stars -->
                 <div class="kksr-legend">';
-            if(parent::get_options('kksr_grs'))
-            {
-                $markup .= apply_filters('kksr_legend', parent::get_options('kksr_legend'), $id);
-            }
+
+            $markup .= $this->ratings_as_legend($id);
+
             $markup .=
                 '</div>
                 <!-- kksr-legend -->
@@ -593,23 +619,29 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
         }
         public function add_row($Columns, $id)
         {
-            if(parent::get_options('kksr_column'))
+            if(! parent::get_options('kksr_column'))
             {
-                $total_stars = parent::get_options('kksr_stars');
-                $row = 'No ratings';
-                $raw = (get_post_meta($id, '_kksr_ratings', true)?get_post_meta($id, '_kksr_ratings', true):0);
-                if($raw)
-                {
-                    $_avg = get_post_meta($id, '_kksr_avg', true);
-                    $avg = '<strong>'.($_avg?((number_format((float)($_avg*($total_stars/5)), 2, '.', '')).'/'.$total_stars):'0').'</strong>';
-                    $cast = (get_post_meta($id, '_kksr_casts', true)?get_post_meta($id, '_kksr_casts', true):'0').' votes';
-                    $per = ($raw>0?ceil((($raw/$cast)/5)*100):0).'%';
-                    $row = $avg . ' (' . $per . ') ' . $cast;
-                }
-                switch($Columns)
-                {
-                    case 'kk_star_ratings' : echo $row; break;
-                }
+                return;
+            }
+
+            $row = 'No ratings';
+
+            $ratings = $this->extract_ratings($id);
+            if ($ratings['score']) {
+                $row = $this->sanitize_legend(
+                    parent::get_options('kksr_legend'),
+                    $id,
+                    $ratings['best'],
+                    $ratings['score'],
+                    $ratings['votes'],
+                    $ratings['avg'],
+                    $ratings['per']
+                );
+            }
+
+            switch($Columns)
+            {
+                case 'kk_star_ratings' : echo $row; break;
             }
         }
         /** function/method
@@ -642,41 +674,40 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
                 $Query->set('orderby','meta_value_num');
             }
         }
-        public function grs_legend($legend, $id)
+        public function sanitize_legend($legend, $id, $best, $score, $votes, $avg, $per)
         {
-            if(parent::get_options('kksr_grs'))
+            if(!$score)
             {
-                $title = get_the_title($id);
-
-                $best = parent::get_options('kksr_stars');
-                $score = get_post_meta($id, '_kksr_ratings', true) ? get_post_meta($id, '_kksr_ratings', true) : 0;
-
-                if($score)
-                {
-                    $votes = get_post_meta($id, '_kksr_casts', true) ? get_post_meta($id, '_kksr_casts', true) : 0;
-                    $avg = $score && $votes ? round((float)(($score/$votes)*($best/5)), 2) : 0;
-                    $per = $score && $votes ? round((float)((($score/$votes)/5)*100), 2) : 0;
-
-                    $leg = str_replace('[total]', '<span itemprop="ratingCount">'.$votes.'</span>', $legend);
-                    $leg = str_replace('[avg]', '<span itemprop="ratingValue">'.$avg.'</span>', $leg);
-                    $leg = str_replace('[per]',  $per .'%', $leg);
-                    $leg = str_replace('[s]', $votes == 1 ? '' : 's', $leg);
-
-                    $snippet = '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
-                    $snippet .= '    <div itemprop="name" class="kksr-title">' . $title . '</div>';
-                    $snippet .=      $leg;
-                    $snippet .= '    <meta itemprop="bestRating" content="'. $best . '"/>';
-                    $snippet .= '    <meta itemprop="worstRating" content="1"/>';
-                    $snippet .= '</div>';
-                }
-                else
-                {
-                    $snippet = parent::get_options('kksr_init_msg');
-                }
-
-                return $snippet;
+                return parent::get_options('kksr_init_msg');
             }
-            return $legend;
+
+            $leg = str_replace('[total]', '<span itemprop="ratingCount">'.$votes.'</span>', $legend);
+            $leg = str_replace('[avg]', '<span itemprop="ratingValue">'.$avg.'</span>', $leg);
+            $leg = str_replace('[per]',  $per .'%', $leg);
+            $leg = str_replace('[s]', $votes == 1 ? '' : 's', $leg);
+
+            return $leg;
+        }
+        public function grs_legend($legend, $id, $best, $score, $votes, $avg, $per)
+        {
+            if(!parent::get_options('kksr_grs'))
+            {
+                return $legend;
+            }
+
+            $title = get_the_title($id);
+
+            $snippet = '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
+            $snippet .= '    <div itemprop="name" class="kksr-title">' . $title . '</div>';
+            $snippet .=      $legend;
+            $snippet .= '    <meta itemprop="bestRating" content="'. $best . '"/>';
+            $snippet .= '    <meta itemprop="worstRating" content="1"/>';
+            $snippet .= '    <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/CreativeWork">';
+            $snippet .= '    <!-- Product properties -->';
+            $snippet .= '    </div>';
+            $snippet .= '</div>';
+
+            return $snippet;
         }
     }
 
@@ -705,7 +736,8 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
     add_shortcode('kkstarratings', array($kkStarRatings_obj, 'manual'));
 
     // Google Rich Snippets
-    add_filter('kksr_legend', array($kkStarRatings_obj, 'grs_legend'), 1, 2);
+    add_filter('kksr_legend', array($kkStarRatings_obj, 'sanitize_legend'), 10, 7);
+    add_filter('kksr_legend', array($kkStarRatings_obj, 'grs_legend'), 10, 7);
 
     // Posts/Pages Column
     add_filter( 'manage_posts_columns', array($kkStarRatings_obj, 'add_column') );
