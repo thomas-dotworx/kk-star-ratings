@@ -34,7 +34,8 @@ class BhittaniPlugin_kkStarRatings_Widget extends WP_Widget
            echo "<li><a href='".get_permalink($post->ID)."'>".$post->post_title."</a>";
            if($sr)
            {
-               echo " <span style='font-size:10px;'>(".$post->ratings."/5)</span>";
+               $best = get_option('kksr_stars');
+               echo " <span style='font-size:10px;'>(".$post->ratings."/".$best.")</span>";
            }
            echo "</li>";
         }

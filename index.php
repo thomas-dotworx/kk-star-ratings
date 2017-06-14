@@ -394,7 +394,7 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
             $best = (int) parent::get_options('kksr_stars');
             $score = get_post_meta($id, '_kksr_ratings', true) ? ((int) get_post_meta($id, '_kksr_ratings', true)) : 0;
             $votes = get_post_meta($id, '_kksr_casts', true) ? ((int) get_post_meta($id, '_kksr_casts', true)) : 0;
-            $avg = $score && $votes ? round((float)(($score/$votes)*($best/5)), 2) : 0;
+            $avg = $score && $votes ? round((float)(($score/$votes)*($best/5)), 1) : 0;
             $per = $score && $votes ? round((float)((($score/$votes)/5)*100), 2) : 0;
 
             return compact('best', 'score', 'votes', 'avg', 'per');
@@ -606,13 +606,17 @@ if(!class_exists('BhittaniPlugin_kkStarRatings')) :
         {
             global $wpdb;
             $table = $wpdb->prefix . 'postmeta';
-            if(!$cat)
-                $rated_posts = $wpdb->get_results("SELECT a.ID, a.post_title, b.meta_value AS 'ratings' FROM " . $wpdb->posts . " a, $table b, $table c WHERE a.post_status='publish' AND a.ID=b.post_id AND a.ID=c.post_id AND b.meta_key='_kksr_avg' AND c.meta_key='_kksr_casts' ORDER BY CAST(b.meta_value AS UNSIGNED) DESC, CAST(c.meta_value AS UNSIGNED) DESC LIMIT $total");
-            else
+            $best = (int) parent::get_options('kksr_stars');
+            $q = "SELECT a.ID, a.post_title, ROUND(b.meta_value * %f, 1) AS 'ratings' FROM " . $wpdb->posts . " a, $table b, ";
+            if(!$cat) {
+                $query = $wpdb->prepare("$q $table c WHERE a.post_status='publish' AND a.ID=b.post_id AND a.ID=c.post_id AND b.meta_key='_kksr_avg' AND c.meta_key='_kksr_casts' ORDER BY CAST(b.meta_value AS UNSIGNED) DESC, CAST(c.meta_value AS UNSIGNED) DESC LIMIT %d", $best / 5, $total);
+                $rated_posts = $wpdb->get_results($query);
+            } else
             {
                 $table2 = $wpdb->prefix . 'term_taxonomy';
                 $table3 = $wpdb->prefix . 'term_relationships';
-                $rated_posts = $wpdb->get_results("SELECT a.ID, a.post_title, b.meta_value AS 'ratings' FROM " . $wpdb->posts . " a, $table b, $table2 c, $table3 d, $table e WHERE c.term_taxonomy_id=d.term_taxonomy_id AND c.term_id=$cat AND d.object_id=a.ID AND a.post_status='publish' AND a.ID=b.post_id AND a.ID=e.post_id AND b.meta_key='_kksr_avg' AND e.meta_key='_kksr_casts' ORDER BY CAST(b.meta_value AS UNSIGNED) DESC, CAST(e.meta_value AS UNSIGNED) DESC LIMIT $total");
+                $query = $wpdb->prepare("$q $table2 c, $table3 d, $table e WHERE c.term_taxonomy_id=d.term_taxonomy_id AND c.term_id=$cat AND d.object_id=a.ID AND a.post_status='publish' AND a.ID=b.post_id AND a.ID=e.post_id AND b.meta_key='_kksr_avg' AND e.meta_key='_kksr_casts' ORDER BY CAST(b.meta_value AS UNSIGNED) DESC, CAST(e.meta_value AS UNSIGNED) DESC LIMIT %d", $best / 5, $total);
+                $rated_posts = $wpdb->get_results($query);
             }
 
             return $rated_posts;
