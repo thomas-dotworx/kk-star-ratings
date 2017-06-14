@@ -9,9 +9,9 @@ Tags: star ratings, votings, rate posts, ajax ratings, infinite stars, unlimited
 
 Requires at least: 3.0
 
-Tested up to: 4.4.2
+Tested up to: 4.8
 
-Stable tag: 2.5.1
+Stable tag: 2.5.2
 
 
 kk Star Ratings allows blog visitors to involve and interact more effectively with your website by rating posts.
@@ -146,6 +146,12 @@ Visit the help tab in the settings to find out what you can do.
 
 
 == Changelog ==
+
+= 2.5.2 =
+* Fix: See [PR #6](https://github.com/kamalkhan/kk-star-ratings/pull/6)
+* Fix: See [PR #24](https://github.com/kamalkhan/kk-star-ratings/pull/24)
+* Fix: See [PR #25](https://github.com/kamalkhan/kk-star-ratings/pull/25)
+* Fix: See [PR #28](https://github.com/kamalkhan/kk-star-ratings/pull/28)
 
 = 2.5.1 =
 * Fix: Google rich snippets with new vocabulary code.
