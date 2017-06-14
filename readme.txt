@@ -11,7 +11,7 @@ Requires at least: 3.0
 
 Tested up to: 4.8
 
-Stable tag: 2.5.2
+Stable tag: 2.6
 
 
 kk Star Ratings allows blog visitors to involve and interact more effectively with your website by rating posts.
@@ -146,6 +146,16 @@ Visit the help tab in the settings to find out what you can do.
 
 
 == Changelog ==
+
+= 2.6 =
+* Fix: Parse legend correctly when not using google rich snippets.
+* Fix: Admin screen colum notice bug.
+* Fix: Show ratings at correct location when shortcode is used.
+* Fix: Widget average values to reflect amount of stars being used.
+* Update: Use one decimal point in average.
+* Update: Use a single source of truth for parsing the legend.
+* Update: Optimize images.
+* Add: Allow [best] value in legend to show the total possible stars.
 
 = 2.5.2 =
 * Fix: See [PR #6](https://github.com/kamalkhan/kk-star-ratings/pull/6)
